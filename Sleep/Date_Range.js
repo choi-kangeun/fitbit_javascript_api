@@ -2,7 +2,7 @@ import { access_token } from '../token.js';
 
 const myList = document.querySelector("ul");
 const aaa = document.getElementById("aaa");
-const json_data = fetch('https://api.fitbit.com/1.2/user/-/sleep/date/2023-03-05.json', {
+const json_data = fetch('https://api.fitbit.com/1.2/user/-/sleep/date/2023-02-27/2023-03-20.json', {
     method: "GET",
     headers: { "Authorization": "Bearer " + access_token },
 })

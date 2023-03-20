@@ -5,7 +5,7 @@ const myList = document.querySelector("ul");
 
 // API 요청 보내기
 fetch(
-  "https://api.fitbit.com/1/user/-/activities/steps/date/2023-03-05/7d.json",
+  "https://api.fitbit.com/1/user/-/hrv/date/2023-02-27/today/all.json",
   {
     method: "GET",
     headers: { Authorization: "Bearer " + access_token },

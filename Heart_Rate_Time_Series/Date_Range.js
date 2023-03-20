@@ -1,16 +1,22 @@
-const myList = document.querySelector("ul");
 import { access_token } from '../token.js';
 
-const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-14/all.json', {
+// DOM 요소 가져오기
+const myList = document.querySelector("ul");
+
+// API 요청 보내기
+fetch(
+  "https://api.fitbit.com/1/user/-/activities/heart/date/2023-02-27/2023-03-17.json",
+  {
     method: "GET",
-    headers: { "Authorization": "Bearer " + access_token },
-})
+    headers: { Authorization: "Bearer " + access_token },
+  }
+)
     .then(response => response.json())
     .then((data) => {
-        for (var product of data["activities-heart"]) {
+        for (const product of data["activities-heart"]) {
             const brr = document.createElement("br");
             const dateTxt = document.createElement("p");
-            var str2 = "";
+            let str2 = "";
             str2 += "dateTime : " + product.dateTime;
             str2 += " restingHeartRate : " + product.value.restingHeartRate;
             dateTxt.textContent = str2;
