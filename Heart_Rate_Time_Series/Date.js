@@ -1,30 +1,36 @@
-const myList = document.querySelector("ul");
 import { access_token } from '../token.js';
 
-const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-14/all.json', {
-    method: "GET",
-    headers: { "Authorization": "Bearer " + access_token },
-})
+// DOM 요소 가져오기
+const myList = document.querySelector("ul");
+
+// API 요청 보내기
+fetch(
+    "https://api.fitbit.com/1/user/-/activities/heart/date/2023-03-17/1d.json",
+    {
+        method: "GET",
+        headers: { Authorization: "Bearer " + access_token },
+    }
+)
     .then(response => response.json())
     .then((data) => {
         // dateTime 값 출력
-        for (var product of data["activities-heart"]) {
+        for (let product of data["activities-heart"]) {
             const brr = document.createElement("br");
             const span = document.createElement("span");
             const br = document.createElement("br");
-            var str = "";
+            let str = "";
             str += "dateTime : " + product.dateTime;
             span.textContent = str;
             document.body.appendChild(span);
             document.body.appendChild(br);
             document.body.appendChild(brr);
         }
-        for (var product2 of data["activities-heart"]) {
-            const brr2 = document.createElement("br");
-            for (var i = 0; i < product2.value.heartRateZones.length; i++) {
-                const span2 = document.createElement("span");
-                const br2 = document.createElement("br");
-                var str2 = "";
+        for (let product2 of data["activities-heart"]) {
+            let brr2 = document.createElement("br");
+            for (let i = 0; i < product2.value.heartRateZones.length; i++) {
+                let span2 = document.createElement("span");
+                let br2 = document.createElement("br");
+                let str2 = "";
                 str2 += "caloriesOut : " + product2.value.heartRateZones[i].caloriesOut;
                 str2 += " max : " + product2.value.heartRateZones[i].max;
                 str2 += " min : " + product2.value.heartRateZones[i].min;
@@ -38,7 +44,7 @@ const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-14/all
             // restingHeartRate 값 출력
             const span = document.createElement("span");
             const br = document.createElement("br");
-            var str = "";
+            let str = "";
             str += "restingHeartRate : " + product2.value.restingHeartRate;
             span.textContent = str;
             document.body.appendChild(span);
@@ -46,11 +52,11 @@ const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-14/all
             document.body.appendChild(brr2);
         }
         // dataset 값 출력
-        for (var product of data["activities-heart-intraday"].dataset) {
+        for (const product of data["activities-heart-intraday"].dataset) {
             const brr = document.createElement("br");
             const span = document.createElement("span");
             const br = document.createElement("br");
-            var str = "";
+            let str = "";
             str += "time : " + product.time;
             str += " value :" + product.value;
             span.textContent = str;
@@ -62,7 +68,7 @@ const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-14/all
         const brr = document.createElement("br");
         const span = document.createElement("span");
         const br = document.createElement("br");
-        var str = "";
+        let str = "";
         str += "datasetInterval : " + data["activities-heart-intraday"].datasetInterval;
         str += " datasetType : " + data["activities-heart-intraday"].datasetType;
         span.textContent = str;
