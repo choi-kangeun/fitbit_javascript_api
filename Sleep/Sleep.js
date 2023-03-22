@@ -36,7 +36,7 @@ const json_data = fetch('https://api.fitbit.com/1.2/user/-/sleep/date/2023-03-05
                 str += " level :" + product.levels.data[i].level;
                 str += " seconds :" + product.levels.data[i].seconds;
 
-                span.textContent = "[" + i + "]" + str;
+                span.textContent = str;
                 document.body.appendChild(span);
                 document.body.appendChild(br);
                 document.body.appendChild(brr);

@@ -1,5 +1,5 @@
 import { access_token } from '../token.js';
-
+function test(){
 // DOM 요소 가져오기
 const myList = document.querySelector("ul");
 
@@ -27,3 +27,5 @@ fetch(
         }
     })
     .catch(console.error);
+}
+test();

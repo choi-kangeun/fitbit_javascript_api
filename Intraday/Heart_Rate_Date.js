@@ -5,7 +5,7 @@ const myList = document.querySelector("ul");
 
 // API 요청 보내기
 fetch(
-  "https://api.fitbit.com/1/user/-/activities/steps/date/2023-03-05/7d.json",
+  "https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/09:00/22:00.json",
   {
     method: "GET",
     headers: { Authorization: "Bearer " + access_token },
@@ -14,22 +14,22 @@ fetch(
     .then(response => response.json())
     .then((data) => {
         // dataTime 값 출력
-        for (var product of data["activities-heart"]) {
+        for (const product of data["activities-heart"]) {
             console.log(product);
             const brr = document.createElement("br");
             const dateTxt = document.createElement("p");
-            var str2 = "";
+            let str2 = "";
             str2 += "dateTime : " + product.dateTime;
             dateTxt.textContent = str2;
             document.body.appendChild(dateTxt);
         }
         // caloriesOut, max, min, minutes, name 값 출력
-        for (var product of data["activities-heart"]) {
+        for (const product of data["activities-heart"]) {
             const brr = document.createElement("br");
             for (var i = 0; i < product.heartRateZones.length; i++) {
                 const span = document.createElement("span");
                 const br = document.createElement("br");
-                var str = "";
+                let str = "";
                 str += "caloriesOut : " + product.heartRateZones[i].caloriesOut;
                 str += " max : " + product.heartRateZones[i].max;
                 str += " min : " + product.heartRateZones[i].min;
@@ -41,11 +41,11 @@ fetch(
                 document.body.appendChild(brr);
             }
             // value 값 출력
-            for (var product of data["activities-heart"]) {
+            for (const product of data["activities-heart"]) {
                 const brr = document.createElement("br");
                 const span = document.createElement("span");
                 const br = document.createElement("br");
-                var str = "";
+                let str = "";
                 str += "value : " + product.value;
                 span.textContent = str;
                 document.body.appendChild(span);
@@ -54,12 +54,12 @@ fetch(
             }
         }
         // time, value 값 출력
-        for (var product of data["activities-heart-intraday"].dataset) {
+        for (const product of data["activities-heart-intraday"].dataset) {
             console.log(product);
             const brr = document.createElement("br");
             const span = document.createElement("span");
             const br = document.createElement("br");
-            var str = "";
+            let str = "";
             str += "time : " + product.time;
             str += " value : " + product.value;
             span.textContent = str;
@@ -72,7 +72,7 @@ fetch(
         const brr = document.createElement("br");
         const span = document.createElement("span");
         const br = document.createElement("br");
-        var str = "";
+        let str = "";
         str += "datasetInterval : " + data["activities-heart-intraday"].datasetInterval;
         str += " datasetType : " + data["activities-heart-intraday"].datasetType;
         span.textContent = str;
