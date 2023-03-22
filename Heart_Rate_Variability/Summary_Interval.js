@@ -1,18 +1,20 @@
 var myList = document.querySelector("ul");
 import { access_token } from '../token.js';
 
-var json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-02-27/2023-03-06.json', {
+var json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-02-27/today.json', {
     method: "GET",
     headers: { "Authorization": "Bearer " + access_token },
 })
     .then(response => response.json())
     .then((data) => {
         for (var product of data.hrv) {
+            console.log(product);
             var brr = document.createElement("br");
             var span = document.createElement("span");
             var br = document.createElement("br");
             var str = "";
-            str += "dailyRmssd : " + product.value.dailyRmssd
+            str += "dateTime : " + product.dateTime
+            str += " dailyRmssd : " + product.value.dailyRmssd
             str += " deepRmssd : " + product.value.deepRmssd
 
             span.textContent = str;

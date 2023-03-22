@@ -1,7 +1,7 @@
 const myList = document.querySelector("ul");
 import { access_token } from '../token.js';
 
-const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-01.json', {
+const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-02.json', {
     method: "GET",
     headers: { "Authorization": "Bearer " + access_token },
 })
