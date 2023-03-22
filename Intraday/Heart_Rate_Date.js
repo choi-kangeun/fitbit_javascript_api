@@ -1,15 +1,20 @@
 import { access_token } from '../token.js';
 
 // DOM 요소 가져오기
+const $topBtn = document.querySelector(".moveTopBtn");
 const myList = document.querySelector("ul");
+
+$topBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 // API 요청 보내기
 fetch(
-  "https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/09:00/22:00.json",
-  {
-    method: "GET",
-    headers: { Authorization: "Bearer " + access_token },
-  }
+    "https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec/time/09:00/22:00.json",
+    {
+        method: "GET",
+        headers: { Authorization: "Bearer " + access_token },
+    }
 )
     .then(response => response.json())
     .then((data) => {

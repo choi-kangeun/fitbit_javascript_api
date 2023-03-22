@@ -1,5 +1,10 @@
+const $topBtn = document.querySelector(".moveTopBtn");
 const myList = document.querySelector("ul");
 import { access_token } from '../token.js';
+
+$topBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 const json_data = fetch('https://api.fitbit.com/1/user/-/hrv/date/2023-03-14/today/all.json', {
     method: "GET",

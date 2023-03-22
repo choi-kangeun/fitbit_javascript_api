@@ -66,3 +66,17 @@ a {
 @media screen and (max-width: 700px) {
 
 }
+
+.moveTopBtn {
+  position: fixed;
+  bottom: 3rem;
+  right: 4rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #263343;
+  color: #fff;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+}

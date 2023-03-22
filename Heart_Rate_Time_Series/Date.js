@@ -1,7 +1,12 @@
 import { access_token } from '../token.js';
 
 // DOM 요소 가져오기
+const $topBtn = document.querySelector(".moveTopBtn");
 const myList = document.querySelector("ul");
+
+$topBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
 // API 요청 보내기
 fetch(
